@@ -1,0 +1,171 @@
+<!-- <?php
+    $connection = mysqli_connect("localhost","root","M@@chud@0","sys");
+    if(!$connection){
+        die("Database connection failed");
+    }
+    else{
+        echo "Connected";
+    }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = $_POST['name'];
+        $product_id = $_POST['product_id'];
+        $manufacturer = $_POST['manufacturer'];
+        $product_price = $_POST['product_price'];
+        $expiry_date = $_POST['expiry_date'];
+        $product_type = $_POST['product_type'];
+        $location = $_POST['location'];
+
+        $query = "INSERT INTO `products` (`product_id`, `name`, `manufacturer`, `product_price`, `expiry_date`, `product_type`, `location`) VALUES ('$product_id', '$name', '$manufacturer', '$product_price', '$expiry_date', '$product_type', '$location')";
+        $result = mysqli_query($conn, $query);
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+</head>
+
+<body>
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <label for="product_id">Product ID</label>
+        <input type="text" name="product_id" id="product_id" required>
+        <br>
+        <label for="product_name">Product Name</label>
+        <input type="text" name="product_name" id="product_name" required>
+        <br>
+        <label for="product_price">Product Price</label>
+        <input type="text" name="product_price" id="product_price" required>
+        <br>
+        <label for="manufacturer">Manufacturer</label>
+        <input type="text" name="manufacturer" id="manufacturer" required>
+        <br>
+        <label for="expiry_date">Expiry Date</label>
+        <input type="date" name="expiry_date" id="expiry_date" required>
+        <br>
+        <label for="product_type">Product Type</label>
+        <input type="text" name="product_type" id="product_type" required>
+        <br>
+        <label for="location">Location</label>
+        <input type="text" name="location" id="location" required>
+        <br>
+        <input type="submit" value="Add Product">
+    </form>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product</title>
+  <link rel="stylesheet" href="cssfile.css">
+  <!-- <script>
+    function submitForm() {
+      const form = document.getElementById('addProductForm');
+      const formData = new FormData(form);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'addProduct.php');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          alert('Product added successfully!');
+        } else {
+          alert('Error adding product.');
+        }
+      };
+
+      xhr.send(formData);
+    }
+  </script> -->
+</head>
+
+  <body style="background-image: url('bg1.webp');">
+  <div class="header">
+    <frame>
+<center><a href="main.php"><img src="HEADER.png"></a></center>
+</frame>
+</div>
+
+
+<select class="btn" onchange="window.location.href=this.value;">
+<option value="" class="btn">Inventory</option> 
+<option value="vieinv.html"> View Inventory</option>    
+<option value="add_product.html"> Add Product</option>    
+<option value="delp.php">Delete Product</option>
+</select>
+<select class="btn" onchange="window.location.href=this.value;">
+<option value="" class="btn">Billing</option>    
+   
+<option value="disct.html">Apply Discount</option>    
+<option value="bill.php">Generate Bill</option>
+</select>
+<button type="button" class="btn"><a href="logout.php">Logout</a></button>
+<div class="wrap">
+<div class="search">
+   <input type="text" class="searchTerm" placeholder="What are you looking for?">
+   <button type="submit" class="searchButton">
+     <i class="fa fa-search"></i>
+  </button>
+</div>
+</div>
+
+ <form action="connect.php" method="post" >
+      <div class="add1"><label for="product_id" >Product id</label>
+        <input type="text" id="product_id" name="product_id" required class="add9">
+        <br></div>
+        <div class="add2"><label for="product_name" >Product Name</label>
+        <input type="text" id="product_name" name="product_name" required class="add10">
+        <br></div>
+        <div class="add3"><label for="product_price" >Product Price</label>
+        <input type="text" id="product_price" name="product_price" required class="add11">
+        <br></div>
+        <div class="add4"><label for="manufacturer" >Manufacturer</label>
+        <input type="text" id="manufacturer" name="manufacturer" required class="add12">
+        <br></div>
+        <div class="add5"><label for="expiry_date" >Expiry_Date</label>
+        <input type="date" id="expiry_date" name="expiry_date" required class="add13">
+        <br></div>
+        <div class="add6"><label for="product_type" >Product type</label>
+        <input type="text" id="product_type" name="product_type" required class="add14">
+        <br></div>
+        <div class="add7"><label for="location" >Location </label>
+        <input type="text" id="location" name="location" required class="add15">
+        <br></div>
+        <input class="btn-16" type="submit" value="Add Product">
+      </form>
+    
+      
+      
+  <!-- <?php
+    if (isset($_POST['product_id'])) {
+      $connection = mysqli_connect("localhost", "root", "M@@chud@0", "sys");
+
+      if (!$connection) {
+        die("Database connection failed");
+      } else {
+        $product_id = $_POST['product_id'];
+        $name = $_POST['product_name'];
+        $manufacturer = $_POST['manufacturer'];
+        $product_price = $_POST['product_price'];
+        $expiry_date = $_POST['expiry_date'];
+        $product_type = $_POST['product_type'];
+        $location = $_POST['location'];
+
+        $query = "INSERT INTO `products` (`product_id`, `name`, `manufacturer`, `product_price`, `expiry_date`, `product_type`, `location`) VALUES ('$product_id', '$name', '$manufacturer', '$product_price', '$expiry_date', '$product_type', '$location')";
+        $result = mysqli_query($connection, $query);
+
+        if ($result) {
+          echo "Product added successfully!";
+        } else {
+          echo "Error adding product.";
+        }
+      }
+    }
+  ?> -->
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Product</title>
+  <link rel="stylesheet" href="cssfile.css">
+ 
+</head>
+
+  <body style="background-image: url('bg1.webp');">
+  <div class="header">
+    <frame>
+        <center><a href="main.php"><img src="HEADER.png"></a></center>
+</frame>
+</div>
+
+
+<select class="btn" onchange="window.location.href=this.value;">
+<option value="" class="btn">Inventory</option>
+<option value="vieinv.html"> View Inventory</option>     
+<option value="add_product.html"> Add Product</option>  
+<option value="delp.php">Delete Product</option>
+</select>
+<select class="btn" onchange="window.location.href=this.value;">
+<option value="" class="btn">Billing</option>    
+    
+<option value="disct.php">Apply Discount</option>    
+<option value="bill.php">Generate Bill</option>
+</select>
+<button type="button" class="btn"><a href="logout.php">Logout</a></button>
+<div class="wrap">
+<div class="search">
+   <input type="text" class="searchTerm" placeholder="What are you looking for?">
+   <button type="submit" class="searchButton">
+     <i class="fa fa-search"></i>
+  </button>
+</div>
+</div>
+
+ <form action="conn3.php" method="post" >
+    
+        <input class="btn-16" type="submit" value="View Inventory">
+      </form>
+ 
+</body>
+
+</html>

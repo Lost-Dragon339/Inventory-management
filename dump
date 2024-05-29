@@ -1,0 +1,687 @@
+   
+      
+      
+  <!-- <?php
+    if (isset($_POST['product_id'])) {
+      $connection = mysqli_connect("localhost", "root", "M@@chud@0", "sys");
+
+      if (!$connection) {
+        die("Database connection failed");
+      } else {
+        $product_id = $_POST['product_id'];
+        $name = $_POST['product_name'];
+        $manufacturer = $_POST['manufacturer'];
+        $product_price = $_POST['product_price'];
+        $expiry_date = $_POST['expiry_date'];
+        $product_type = $_POST['product_type'];
+        $location = $_POST['location'];
+
+        $query = "INSERT INTO `products` (`product_id`, `name`, `manufacturer`, `product_price`, `expiry_date`, `product_type`, `location`) VALUES ('$product_id', '$name', '$manufacturer', '$product_price', '$expiry_date', '$product_type', '$location')";
+        $result = mysqli_query($connection, $query);
+
+        if ($result) {
+          echo "Product added successfully!";
+        } else {
+          echo "Error adding product.";
+        }
+      }
+    }
+  ?> -->
+   <!-- <script>
+    function submitForm() {
+      const form = document.getElementById('addProductForm');
+      const formData = new FormData(form);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'addProduct.php');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          alert('Product added successfully!');
+        } else {
+          alert('Error adding product.');
+        }
+      };
+
+      xhr.send(formData);
+    }
+  </script> -->
+  <!-- <?php
+    $connection = mysqli_connect("localhost","root","M@@chud@0","sys");
+    if(!$connection){
+        die("Database connection failed");
+    }
+    else{
+        echo "Connected";
+    }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = $_POST['name'];
+        $product_id = $_POST['product_id'];
+        $manufacturer = $_POST['manufacturer'];
+        $product_price = $_POST['product_price'];
+        $expiry_date = $_POST['expiry_date'];
+        $product_type = $_POST['product_type'];
+        $location = $_POST['location'];
+
+        $query = "INSERT INTO `products` (`product_id`, `name`, `manufacturer`, `product_price`, `expiry_date`, `product_type`, `location`) VALUES ('$product_id', '$name', '$manufacturer', '$product_price', '$expiry_date', '$product_type', '$location')";
+        $result = mysqli_query($conn, $query);
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+</head>
+
+<body>
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <label for="product_id">Product ID</label>
+        <input type="text" name="product_id" id="product_id" required>
+        <br>
+        <label for="product_name">Product Name</label>
+        <input type="text" name="product_name" id="product_name" required>
+        <br>
+        <label for="product_price">Product Price</label>
+        <input type="text" name="product_price" id="product_price" required>
+        <br>
+        <label for="manufacturer">Manufacturer</label>
+        <input type="text" name="manufacturer" id="manufacturer" required>
+        <br>
+        <label for="expiry_date">Expiry Date</label>
+        <input type="date" name="expiry_date" id="expiry_date" required>
+        <br>
+        <label for="product_type">Product Type</label>
+        <input type="text" name="product_type" id="product_type" required>
+        <br>
+        <label for="location">Location</label>
+        <input type="text" name="location" id="location" required>
+        <br>
+        <input type="submit" value="Add Product">
+    </form>
+</body>
+
+
+
+//(<!-- <?php
+//<link rel="stylesheet" href="cssfile.css">
+$css = 'body {
+    background-color: #fff;
+    font-family: sans-serif;
+  }
+  
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  p {
+    margin: 0 0 10px 0;
+  }';
+$db = mysqli_connect("localhost", "root", "M@@chud@0", "sys");
+
+if (!$db) {
+    die("Database connection failed");
+}
+
+// Store the SQL query string in a variable
+$sql = "SELECT product_id, product_name, product_price, manufacturer, expiry_date, product_type, location FROM products";
+
+// Prepare the query
+$stmt = $db->prepare($sql);
+
+// Execute the query
+$stmt->execute();
+
+// Get the query result
+$result = $stmt->get_result();
+
+// Display the table data
+echo "<table border='1'>";
+echo "<tr>";
+echo "<th>Product ID</th>";
+echo "<th>Product Name</th>";
+echo "<th>Product Price</th>";
+echo "<th>Manufacturer</th>";
+echo "<th>Expiry Date</th>";
+echo "<th>Product Type</th>";
+echo "<th>Location</th>";
+echo "</tr>";
+
+while ($row = $result->fetch_assoc()) {
+    echo "<tr>";
+    echo "<td>" . $row['product_id'] . "</td>";
+    echo "<td>" . $row['product_name'] . "</td>";
+    echo "<td>" . $row['product_price'] . "</td>";
+    echo "<td>" . $row['manufacturer'] . "</td>";
+    echo "<td>" . $row['expiry_date'] . "</td>";
+    echo "<td>" . $row['product_type'] . "</td>";
+    echo "<td>" . $row['location'] . "</td>";
+    echo "</tr>";
+}
+
+echo "</table>";
+
+$db->close();
+
+?>)//
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing</title>
+  <link rel="stylesheet" href="cssfile.css">
+ 
+</head>
+
+  <body style="background-image: url('bg1.webp');">
+  <div class="header">
+    <frame>
+        <center><a href="main.html"><img src="HEADER.png"></a></center>
+</frame>
+</div>
+
+
+<select class="btn" onchange="window.location.href=this.value;">
+<option value="" class="btn">Inventory</option>  
+<option value="vieinv.html"> View Inventory</option>   
+<option value="add_product.html"> Add Product</option>   
+<option value="delp.html">Delete Product</option>
+</select>
+<select class="btn" onchange="window.location.href=this.value;">
+<option value="" class="btn">Billing</option>    
+<option value="scanp.html">Scan Product</option>    
+<option value="disct.html">Apply Discount</option>    
+<option value="bill.php">Generate Bill</option>
+</select>
+<button type="button" class="btn">Logout</button>
+<div class="wrap">
+<div class="search">
+   <input type="text" class="searchTerm" placeholder="What are you looking for?">
+   <button type="submit" class="searchButton">
+     <i class="fa fa-search"></i>
+  </button>
+</div>
+</div>
+
+ <form action="bill.php" method="post" >
+    <div class="del"><label for="product_id" >Product Id</label>
+        <input id="product_id" name="product_id" required class="del1">
+        <br></div>
+        <input class="btn-16" type="submit" value="Generate Bill">
+      </form>
+ 
+</body>
+
+</html>
+
+
+<?php
+$db = mysqli_connect("localhost", "root", "M@@chud@0", "sys");
+
+if (!$db) {
+    die("Database connection failed");
+}
+$product_id = $_POST['product_id']; // Set a default value for product_price
+$product_price = $_POST['product_price']; // Set a default value for product_price
+function get_product_price($product_id) {
+ 
+
+  // Prepare the SQL query
+  $sql = "SELECT product_price FROM products WHERE product_id = $product_id";
+  $stmt = $db->prepare($sql);
+  $stmt->bindParam(':product_id', $product_id);
+
+  // Execute the query and get the product price
+  $stmt->execute();
+  $result = $stmt->get_result();
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $product_price = $row['product_price'];
+  } else {
+    $product_price = null;
+  }
+
+  // Close the connection and return the product price
+  $stmt->close();
+  $db->close();
+
+  return $product_price;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing</title>
+  <link rel="stylesheet" href="cssfile.css">
+
+</head>
+
+<body style="background-image: url('bg1.webp');">
+  <div class="header">
+    <frame>
+      <center><a href="main.html"><img src="HEADER.png"></a></center>
+    </frame>
+  </div>
+
+  <select class="btn" onchange="window.location.href=this.value;">
+    <option value="" class="btn">Inventory</option>
+    <option value="vieinv.html"> View Inventory</option>
+    <option value="add_product.html"> Add Product</option>
+    <option value="delp.html">Delete Product</option>
+  </select>
+  <select class="btn" onchange="window.location.href=this.value;">
+    <option value="" class="btn">Billing</option>
+    <option value="scanp.html">Scan Product</option>
+    <option value="disct.html">Apply Discount</option>
+    <option value="bill.php">Generate Bill</option>
+  </select>
+  <button type="button" class="btn">Logout</button>
+
+  <div class="wrap">
+    <div class="search">
+      <input type="text" class="searchTerm" placeholder="What are you looking for?">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <h2>Scan Products</h2>
+
+  <form action="" method="post">
+    <div class="del">
+      <label for="product_id">Product ID</label>
+      <input id="product_id" name="product_id" required class="del1">
+      <br>
+      <input class="btn-16" type="submit" value="Scan Product">
+    </div>
+  </form>
+
+  <?php
+    $db = mysqli_connect("localhost", "root", "M@@chud@0", "sys");
+
+    if (!$db) {
+      die("Database connection failed");
+    }
+
+    $total_price = 0; // Initialize total price
+
+    if (isset($_POST['product_id'])) {
+      $product_id = $_POST['product_id'];
+
+      // Check if product ID exists in database
+      $sql = "SELECT product_price FROM products WHERE product_id = $product_id";
+      $result = mysqli_query($db, $sql);
+
+      if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          $product_price = $row['product_price'];
+
+          // Add product price to total price
+          $total_price += $product_price;
+
+          echo "<p>Product ID: $product_id - Price: $$product_price</p>";
+        }
+      } else {
+        echo "<p>Product with ID $product_id not found.</p>";
+      }
+    }
+
+    // Display total price
+    echo "<h2>Total Price: $$total_price</h2>";
+
+    mysqli_close($db);
+  ?>
+
+</body>
+
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Billing System</title>
+  <link rel="stylesheet" href="cssfile.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Billing System</h1>
+
+    <form action="bill.php" method="post">
+      <label for="product_id">Product ID:</label>
+      <input type="text" id="product_id" name="product_id" required>
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" required>
+
+      <input type="submit" value="Generate Bill">
+    </form>
+  </div>
+</body>
+</html>
+
+<?php
+$db = mysqli_connect("localhost", "root", "M@@chud@0", "sys");
+
+if (!$db) {
+  die("Database connection failed");
+}
+
+$product_id = isset($_POST['product_id']) ? $_POST['product_id'] : null;
+$quantity = $_POST['quantity'];
+
+$sql = "SELECT product_name, product_price FROM products WHERE product_id = ?";
+$stmt = mysqli_prepare($db, $sql);
+mysqli_stmt_bind_param($stmt, "i", $product_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+if (mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_assoc($result);
+  $product_name = $row['product_name'];
+  $product_price = $row['product_price'];
+
+  $total_price = $product_price * $quantity;
+
+  echo "<h2>Bill</h2>";
+  echo "<p>Product Name: $product_name</p>";
+  echo "<p>Quantity: $quantity</p>";
+  echo "<p>Unit Price: $$product_price</p>";
+  echo "<hr>";
+  echo "<h2>Total Price: $$total_price</h2>";
+} else {
+  echo "<p>Product with ID $product_id not found.</p>";
+}
+
+mysqli_close($db);
+
+
+<?php
+$db = mysqli_connect("localhost", "root", "M@@chud@0", "sys");
+
+if (!$db) {
+  die("Database connection failed");
+}
+
+$product_ids = isset($_POST['product_id']) ? $_POST['product_id'] : [];
+$quantities = isset($_POST['quantity']) ? $_POST['quantity'] : [];
+$transaction_ids = isset($_POST['transaction_id']) ? $_POST['transaction_id'] : [];
+
+$total_price = 0;
+
+$membershipDiscount = 0;
+$occasionalDiscount = 0;
+$expiringProductDiscount = 0;
+$flatDiscount = 0;
+$grandTotal = 0;
+
+// Check if membership discount is applicable
+if (isset($_POST['membershipCard']) && $_POST['membershipCard'] == 'yes') {
+  $membershipDiscount = 2;
+}
+
+// Check if occasional discount is applicable
+if (isset($_POST['occasionalEvent'])) {
+  $occasionalDiscount = rand(5, 10);
+}
+
+// Calculate expiring product discount for each product
+for ($i = 0; $i < count($product_ids); $i++) {
+  $product_id = $product_ids[$i];
+  $quantity = $quantities[$i];
+  $transaction_id = $transaction_ids[$i];
+
+  // Retrieve product information for product
+  $sql = "SELECT product_name, product_price, product_type, expiry_date FROM products WHERE product_id = ?";
+  $stmt = mysqli_prepare($db, $sql);
+  mysqli_stmt_bind_param($stmt, "i", $product_id);
+  mysqli_stmt_execute($stmt);
+  $result = mysqli_stmt_get_result($stmt);
+
+  if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $product_name = $row['product_name'];
+    $product_price = $row['product_price'];
+    $product_type = $row['product_type'];
+    $expiry_date = $row['expiry_date'];
+
+    // Calculate product discount based on product type and age
+    if (in_array($product_type, ['grocery', 'bakery', 'raw_flesh', 'prepared_food'])) {
+      $product_age = calculateProductAge($expiry_date);
+
+      if ($product_age <= 5) {
+        $expiringProductDiscount = 5;
+      }
+    }
+
+    // Calculate total discount
+    $totalDiscount = max($membershipDiscount, $occasionalDiscount, $expiringProductDiscount);
+
+    // Calculate discounted price
+    $discountedPrice = $product_price * (1 - $totalDiscount / 100);
+
+    // Calculate total price with quantity
+    $totalPrice = $discountedPrice * $quantity;
+
+    // Add to total price
+    $total_price += $totalPrice;
+
+    // Display product details and discounts
+    echo "<p>Product Name: $product_name</p>";
+    echo "<p>Quantity: $quantity</p>";
+    echo "<p>Original Price: $$product_price</p>";
+
+    if ($expiringProductDiscount > 0) {
+      echo "<p>Expiring Product Discount: -$expiringProductDiscount%</p>";
+    }
+
+    if ($occasionalDiscount > 0) {
+      echo "<p>Occasional Event Discount: -$occasionalDiscount%</p>";
+    }
+
+    if ($membershipDiscount > 0) {
+      echo "<p>Membership Discount: -$membershipDiscount%</p>";
+    }
+
+    echo "<p>Discounted Price: $$discountedPrice</p>";
+    echo "<p>Total Price: $$totalPrice</p>";
+    echo "<hr>";
+
+    // Update discount amount in sales_transactions table
+    $query1 = "UPDATE sales_transactions SET discount_amount = ? WHERE transaction_id = ?";
+    $stmt1 = mysqli_prepare($db, $query1);
+    mysqli_stmt_bind_param($stmt1, "di", $totalDiscount, $transaction_id);
+    mysqli_stmt_execute($stmt1);
+    mysqli_stmt_close($stmt1);
+  } else {
+    echo "<p>Product with ID $product_id not found.</p>";
+  }
+}
+
+// Apply flat discount if total price is above RS500
+if ($total_price > 500) {
+  $flatDiscount = 5;
+}
+
+// Calculate final total price with flat discount
+$finalTotalPrice = $total_price * (1 - $flatDiscount / 100);
+
+// Display grand total
+echo "<h2>Grand Total: $$finalTotalPrice</h2>";
+
+// Close database connection
+mysqli_close($db);
+
+
+if (in_array($product_type, ['grocery', 'bakery', 'raw_flesh', 'prepared_food'])) {
+  $product_age = calculateProductAge($expiry_date);
+
+  if ($product_age <= 5) {
+    $expiringProductDiscount = 5;
+    $query1 = mysqli_query($db, "UPDATE products SET product_price = $product_price * 0.95 WHERE product_id = $product_id;");
+    if($query1){
+      echo "<script type=\"text/javascript\"> alert('Successfully Updated Product Price.'); window.location.href = 'http://localhost/delp.html'; </script>";
+    }
+    else{
+      echo "<script type=\"text/javascript\"> alert('Failed to Update Product Price.'); window.location.href = 'http://localhost/delp.html'; </script>";
+    }
+  }
+}
+
+
+$expiryDate = isset($_POST['expiry_date']) ? $_POST['expiry_date'] : [];
+function calculateProductAge($expiryDate) {
+  $expiryDate = new DateTime($expiryDate);
+  $today = new DateTime(date('Y-m-d'));
+
+  $diff = $today->diff($expiryDate);
+
+  return $diff->days;
+}
+
+
+
+for ($i = 0; $i < count($product_ids); $i++) {
+  $product_id = $product_ids[$i];
+  $quantity = $quantities[$i];
+  
+
+  // Retrieve product information for product
+  $sql = "SELECT product_name, product_price, product_type, expiry_date FROM products WHERE product_id = ?";
+  $stmt = mysqli_prepare($db, $sql);
+  mysqli_stmt_bind_param($stmt, "i", $product_id);
+  mysqli_stmt_execute($stmt);
+  $result = mysqli_stmt_get_result($stmt);
+
+  if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $product_name = $row['product_name'];
+    $product_price = $row['product_price'];
+    $product_type = $row['product_type'];
+    $expiry_date = $row['expiry_date'];
+
+
+
+
+    <?php
+$db = mysqli_connect("localhost", "root", "", "billing_system");
+
+if (!$db) {
+  die("Database connection failed");
+}
+
+$product_ids = isset($_POST['product_id']) ? $_POST['product_id'] : [];
+$quantities = isset($_POST['quantity']) ? $_POST['quantity'] : [];
+
+$total_price = 0;
+
+$membershipDiscount = 0;
+$occasionalDiscount = 0;
+$expiringProductDiscount = 0;
+$flatDiscount = 0;
+
+// Check if membership discount is applicable
+if (isset($_POST['membershipCard']) && $_POST['membershipCard'] == 'yes') {
+  $membershipDiscount = 2;
+}
+
+// Check if occasional discount is applicable
+if (isset($_POST['occasionalEvent'])) {
+  $occasionalDiscount = rand(5, 10);
+}
+
+// Calculate expiring product discount for each product
+for ($i = 0; $i < count($product_ids); $i++) {
+  $product_id = $product_ids[$i];
+
+  // Check if product is grocery/bakery/raw flesh/prepared food
+  $sql = "SELECT product_type FROM products WHERE product_id = ?";
+  $stmt = mysqli_prepare($db, $sql);
+  mysqli_stmt_bind_param($stmt, "i", $product_id);
+  mysqli_stmt_execute($stmt);
+  $result = mysqli_stmt_get_result($stmt);
+
+  if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $product_type = $row['product_type'];
+
+    if (in_array($product_type, ['grocery', 'bakery', 'raw_flesh', 'prepared_food'])) {
+      $product_age = calculateProductAge
+
+
+
+      <?php
+$db = mysqli_connect("localhost", "root", "M@@chud@0", "sys");
+
+if (!$db) {
+    die("Database connection failed");
+}
+// Retrieve product IDs and quantities
+$sql = "SELECT product_id, product_name, product_price, manufacturer, expiry_date, product_type, location FROM products";
+$stmt = mysqli_prepare($db, $sql);
+$product_ids = isset($_POST['product_id']) ? $_POST['product_id'] : [];
+
+
+
+
+
+// Iterate through the products
+for ($i = 0; $i < count($product_ids); $i++) {
+    $product_id = $product_ids[$i];
+    $quantity = $quantities[$i];
+
+    // Retrieve product information for product
+   
+    
+    mysqli_stmt_bind_param($stmt, "i", $product_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($result) > 0) {
+        // Fetch product information
+        $row = mysqli_fetch_assoc($result);
+        $product_name = $row['product_name'];
+        $product_price = $row['product_price'];
+        $product_type = $row['product_type'];
+        $expiry_date = $row['expiry_date'];
+
+        // Calculate product age
+        $today = new DateTime();
+        $expiryDate = new DateTime($expiry_date);
+        $product_age = $today->diff($expiryDate)->days;
+
+        // Check if product type is eligible for discount
+        if (in_array($product_type, ['grocery', 'bakery', 'raw_flesh', 'prepared_food'])) {
+            // Apply discounts
+            $discounted_price = $product_price;
+            for ($j = 0; $j < $product_age; $j++) {
+                $discounted_price = $discounted_price * 0.95;
+            }
+
+            // Update product price with discount
+            $update_query = "UPDATE products SET product_price = $discounted_price WHERE product_id = ?";
+            $update_stmt = mysqli_prepare($db, $update_query);
+            mysqli_stmt_bind_param($update_stmt, "i", $product_id);
+            mysqli_stmt_execute($update_stmt);
+            mysqli_stmt_close($update_stmt);
+        }
+    }
+}
+
+// Close database connection
+mysqli_close($db);
+
+?>
